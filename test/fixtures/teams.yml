@@ -1,0 +1,9 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+team_one:
+  title: Team one title
+  description: Team one description
+
+team_two:
+  title: Team two title
+  description: Team two description
