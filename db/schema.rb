@@ -61,7 +61,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_06_28_182329) do
 
   create_table "user_teams", primary_key: ["user_id", "team_id"], force: :cascade do |t|
     t.datetime "created_at", null: false
-    t.integer "role", default: 3
+    t.integer "role", default: 1
     t.integer "team_id", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id", null: false

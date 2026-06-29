@@ -1,1 +1,17 @@
-<h1>Hello</h1>
+<h1>Teams</h1>
+<% if authenticated? %>
+  <%= button_to "Create team", new_team_path, method: :get %>
+  <% @teams.each do |team| %>
+    <div class="card">
+      <h3><%= team.title %></h3>
+      <p><%= team.description %></p>
+
+      <% if team.user_teams.find_by(user: Current.user).owner? %>
+        <div class="grid">
+          <%= button_to "Edit", edit_team_path(team), class: "secondary" %>
+          <%= button_to "Delete", team_path(team), method: :delete, class: "secondary" %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+<% end %>
