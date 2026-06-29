@@ -1,6 +1,5 @@
 require_relative "../test_helper"
 
-
 class TeamTest < ActiveSupport::TestCase
   test "empty team is invalid" do
     assert !(Team.new.valid?)

@@ -1,0 +1,10 @@
+<h1><%= @team.title %></h1>
+<div><%= @team.description %></div>
+<small>Your role: <b><%= @user_team.role %></b></small>
+
+<% if @user_team.owner? %>
+  <div class="grid">
+    <%= button_to "Edit", edit_team_path(@team), method: :get, class: "secondary" %>
+    <%= button_to "Delete", team_path(@team), method: :delete, data: { turbo_confirm: "Are you sure?" }, class: "secondary" %>
+  </div>
+<% end %>

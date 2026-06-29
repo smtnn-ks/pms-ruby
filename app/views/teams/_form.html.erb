@@ -1,0 +1,13 @@
+<%= form_with model: team do |form| %>
+  <% if form.object.errors.any? %>
+    <p class="error"><%= form.object.errors.full_messages.first %></p>
+  <% end %>
+
+  <%= form.label :title %>
+  <%= form.text_field :title %>
+
+  <%= form.label :description %>
+  <%= form.text_field :description %>
+
+  <%= form.submit %>
+<% end %>
