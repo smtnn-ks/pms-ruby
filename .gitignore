@@ -34,3 +34,5 @@
 /config/*.key
 
 .solargraph.yml
+.ruby-lsp
+.idea
