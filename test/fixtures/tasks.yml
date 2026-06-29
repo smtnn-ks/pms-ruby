@@ -1,0 +1,14 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+task_one:
+  title: Task 1 title
+  description: Task 1 description
+  team: team_one
+  author: user_one
+  assignee: user_two
+
+task_two:
+  title: Task 2 title
+  description: Task 2 description
+  team: team_two
+  author: user_two

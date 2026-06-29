@@ -1,0 +1,2 @@
+class TaskChangelogsController < ApplicationController
+end

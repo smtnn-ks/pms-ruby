@@ -1,0 +1,9 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+task_changelog_one:
+  task: task_one
+  user: user_one
+
+task_changelog_two:
+  task: task_one
+  user: user_two
