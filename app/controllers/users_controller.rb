@@ -10,13 +10,15 @@ class UsersController < ApplicationController
     @user = User.new @params
 
     begin
-      @user.save
-      flash[:notice] = "User created"
+      if not @user.save
+        render :new, status: :unprocessable_entity
+      else
+        Current.session&.delete(:return_to_after_authenticating)
+        redirect_to new_session_path, notice: "User was successfully created."
+      end
     rescue ActiveRecord::RecordNotUnique
-      flash[:alert] = "User already exists"
+      render :new, status: :unprocessable_entity, alert: "User already exists"
     ensure
-      Current.session&.delete(:return_to_after_authenticating)
-      redirect_to new_session_path
     end
   end
 end

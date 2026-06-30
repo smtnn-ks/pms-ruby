@@ -61,7 +61,7 @@ class TeamsControllerTest < ActionDispatch::IntegrationTest
     patch team_url(@team), params: { team: {} }
 
     assert_response :bad_request
-    assert_equal @team.updated_at, @team.reload.updated_at
+    assert_not @team.changed?
   end
 
   test "should not update if team is not found" do
