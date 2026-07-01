@@ -8,3 +8,19 @@
     <%= button_to "Delete", team_path(@team), method: :delete, data: { turbo_confirm: "Are you sure?" }, class: "secondary" %>
   </div>
 <% end %>
+
+<div class="grid">
+  <h2>Tasks</h2>
+  <%= button_to "Add Task", new_team_task_path(@team), method: :get %>
+</div>
+
+<% if  @team.tasks.empty? %>
+  <p>No tasks</p>
+<% else %>
+  <%= @team.tasks.each do |task| %>
+    <div class="card">
+      <h3><%= link_to task.title, task_path(task) %></h3>
+      <p><%= task.description %></p>
+    </div>
+  <% end %>
+<% end %>
