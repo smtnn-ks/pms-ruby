@@ -9,6 +9,7 @@
 <div class="grid">
   <%= link_to "Edit", edit_team_task_path(@team, @task) %>
   <%= button_to "Delete", team_task_path(@team, @task), method: :delete, data: { turbo_confirm: "Are you sure?" }, class: "secondary" %>
+  <%= link_to "View changelog", team_task_task_changelogs_path(@team, @task) %>
 </div>
 
 <hr>

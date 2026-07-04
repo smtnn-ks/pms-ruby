@@ -29,6 +29,7 @@ class TasksController < ApplicationController
   def update
     @params = params.expect task: [ :title, :description, :assignee_id ]
     if @task.update @params
+      @task.task_changelogs.create!(user: Current.user)
       redirect_to team_task_path(@team, @task)
     else
       render :edit, status: :unprocessable_entity

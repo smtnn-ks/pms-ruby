@@ -102,6 +102,16 @@ class TasksControllerTest < ActionDispatch::IntegrationTest
     assert_equal users(:user_two), @task.assignee
   end
 
+  test "should create task changelog when title changes" do
+    assert_difference("TaskChangelog.count", 1) do
+      patch team_task_url(@team, @task), params: { task: { title: "Updated Task Title" } }
+    end
+
+    assert_redirected_to team_task_url(@team, @task)
+    assert_equal users(:user_one), TaskChangelog.last.user
+    assert_equal @task.reload.id, TaskChangelog.last.task_id
+  end
+
   test "should not update task if team is not found" do
     patch team_task_url(Team.new(id: 0), @task), params: { task: { title: "Updated Task Title" } }
 

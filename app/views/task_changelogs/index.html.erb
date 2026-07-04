@@ -1,0 +1,15 @@
+<small><%= link_to "Back to task", team_task_path(@team, @task) %></small>
+<br>
+
+<h1>Task changelog</h1>
+
+<% if @task_changelogs.any? %>
+  <% @task_changelogs.each do |changelog| %>
+    <article>
+      <p>Updated by <%= changelog.user&.email_address || "Unknown" %></p>
+      <small><%= changelog.created_at.strftime("%Y-%m-%d %H:%M") %></small>
+    </article>
+  <% end %>
+<% else %>
+  <p>No changelog entries yet.</p>
+<% end %>

@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :task_changelogs
   resource :session
   resources :passwords, param: :token
 
@@ -8,6 +7,7 @@ Rails.application.routes.draw do
   resources :teams do
     resources :tasks, only: %i[ show new create edit update destroy ] do
       resources :comments, only: %i[ edit create update destroy ]
+      resources :task_changelogs, only: %i[ index ]
     end
   end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
