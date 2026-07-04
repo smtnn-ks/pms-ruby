@@ -10,3 +10,35 @@
   <%= link_to "Edit", edit_team_task_path(@team, @task) %>
   <%= button_to "Delete", team_task_path(@team, @task), method: :delete, data: { turbo_confirm: "Are you sure?" }, class: "secondary" %>
 </div>
+
+<hr>
+
+<h2>Comments</h2>
+
+<% if @comments.any? %>
+  <% @comments.each do |comment| %>
+    <article>
+      <p><%= comment.content %></p>
+      <small>By <%= comment.user&.email_address || "Unknown" %> on <%= comment.created_at.strftime("%Y-%m-%d %H:%M") %></small>
+      <div class="grid">
+        <%= link_to "Edit", edit_team_task_comment_path(@team, @task, comment) %>
+        <%= button_to "Delete", team_task_comment_path(@team, @task, comment), method: :delete, class: "secondary" %>
+      </div>
+    </article>
+  <% end %>
+<% else %>
+  <p>No comments yet.</p>
+<% end %>
+
+<%= form_with model: @comment, url: team_task_comments_path(@team, @task), method: :post do |form| %>
+  <% if @comment.errors.any? %>
+    <ul>
+      <% @comment.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <%= form.text_area :content, rows: 3, required: true %>
+  <%= form.submit "Add comment" %>
+<% end %>

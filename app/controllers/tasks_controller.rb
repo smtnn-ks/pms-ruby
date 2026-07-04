@@ -3,6 +3,8 @@ class TasksController < ApplicationController
   before_action :get_task, only: %i[ show edit update destroy ]
 
   def show
+    @comments = @task.comments.includes(:user).order(created_at: :asc)
+    @comment = Comment.new
   end
 
   def new

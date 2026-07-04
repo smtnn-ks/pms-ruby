@@ -1,0 +1,17 @@
+<small><%= link_to "Back to task", team_task_path(@team, @task) %></small>
+<br>
+
+<h1>Edit comment</h1>
+
+<%= form_with model: @comment, url: team_task_comment_path(@team, @task, @comment), method: :patch do |form| %>
+  <% if @comment.errors.any? %>
+    <ul>
+      <% @comment.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <%= form.text_area :content, rows: 3, required: true %>
+  <%= form.submit "Update comment" %>
+<% end %>
