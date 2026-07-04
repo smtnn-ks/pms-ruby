@@ -1,4 +1,12 @@
+<small><%= link_to "Back to team", team_path(@task.team) %></small>
+<br>
+
 <h1>Task</h1>
 
 <h3><%= @task.title %></h3>
 <p><%= @task.description %></p>
+<p><b>Assignee: </b><%= @task.assignee&.email_address or "Not assigned" %></p>
+<div class="grid">
+  <%= link_to "Edit", edit_team_task_path(@team, @task) %>
+  <%= button_to "Delete", team_task_path(@team, @task), method: :delete, data: { turbo_confirm: "Are you sure?" }, class: "secondary" %>
+</div>
