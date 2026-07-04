@@ -77,14 +77,14 @@ ActiveRecord::Schema[8.1].define(version: 2026_06_28_182329) do
     t.index ["email_address"], name: "index_users_on_email_address", unique: true
   end
 
-  add_foreign_key "comments", "tasks"
+  add_foreign_key "comments", "tasks", on_delete: :cascade
   add_foreign_key "comments", "users"
   add_foreign_key "sessions", "users"
-  add_foreign_key "task_changelogs", "tasks"
+  add_foreign_key "task_changelogs", "tasks", on_delete: :cascade
   add_foreign_key "task_changelogs", "users"
-  add_foreign_key "tasks", "teams"
+  add_foreign_key "tasks", "teams", on_delete: :cascade
   add_foreign_key "tasks", "users", column: "assignee_id"
   add_foreign_key "tasks", "users", column: "author_id"
-  add_foreign_key "user_teams", "teams"
-  add_foreign_key "user_teams", "users"
+  add_foreign_key "user_teams", "teams", on_delete: :cascade
+  add_foreign_key "user_teams", "users", on_delete: :cascade
 end
