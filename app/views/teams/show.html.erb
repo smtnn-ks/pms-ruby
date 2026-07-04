@@ -14,12 +14,12 @@
   <%= button_to "Add Task", new_team_task_path(@team), method: :get %>
 </div>
 
-<% if  @team.tasks.empty? %>
+<% if @team.tasks.empty? %>
   <p>No tasks</p>
 <% else %>
-  <%= @team.tasks.each do |task| %>
+  <% @team.tasks.each do |task| %>
     <div class="card">
-      <h3><%= link_to task.title, task_path(task) %></h3>
+      <h3><%= link_to task.title, team_task_path(@team, task) %></h3>
       <p><%= task.description %></p>
     </div>
   <% end %>

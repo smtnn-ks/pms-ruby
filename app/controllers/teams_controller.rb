@@ -16,9 +16,8 @@ class TeamsController < ApplicationController
 
   def create
     @params = params.expect team: [ :title, :description ]
-    @team = Current.user.teams.new @params
 
-    if @team.save
+    if @team = Current.user.teams.create(@params)
       redirect_to team_path(@team), notice: "Team created"
     else
       render :new, status: :unprocessable_entity
